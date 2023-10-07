@@ -38,8 +38,12 @@ namespace UdemyRabbitMQ.publisher
 
                 var messageBody = Encoding.UTF8.GetBytes(message);
 
-                channel.BasicPublish("logs-fanout","", null, messageBody);
-               
+               // channel.BasicPublish("logs-fanout","", null, messageBody);
+                //yada
+                channel.BasicPublish(exchange: "logs-fanout", routingKey: string.Empty, basicProperties: null, body: messageBody);
+
+
+
                 Console.WriteLine($"Mesaj gönderilmiştir : {message}");
               //  Thread.Sleep(1500);
             });
