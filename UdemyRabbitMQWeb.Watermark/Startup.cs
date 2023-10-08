@@ -28,7 +28,17 @@ namespace UdemyRabbitMQWeb.Watermark
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync=true });
+         //   services.AddSingleton(sp => new ConnectionFactory() { Uri = new Uri(Configuration.GetConnectionString("RabbitMQ")), DispatchConsumersAsync=true });
+            services.AddSingleton(sp => new ConnectionFactory()
+            {
+                HostName = "192.168.1.109",
+                UserName = "my",
+                Password = "1",
+                Port = 5672, 
+                DispatchConsumersAsync = true });
+
+     
+
 
             services.AddSingleton<RabbitMQClientService>();
             services.AddSingleton<RabbitMQPublisher>();

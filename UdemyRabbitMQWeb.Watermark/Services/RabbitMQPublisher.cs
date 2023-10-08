@@ -27,7 +27,7 @@ namespace UdemyRabbitMQWeb.Watermark.Services
 
             var properties = channel.CreateBasicProperties();
             properties.Persistent = true;
-
+    
             channel.BasicPublish(exchange: RabbitMQClientService.ExchangeName,  routingKey: RabbitMQClientService.RoutingWatermark, basicProperties: properties, body: bodyByte);
 
         }
